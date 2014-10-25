@@ -61,8 +61,7 @@ moltenDT <- melt(selectedFeatureDT, id.vars = c("Subject", "Activity"), measure.
 tidyDT <- cast(moltenDT, Subject + Activity ~ variable, mean)
 # Step 7 - Write the data to a csv file
 # we use write.csv as a wrapper for write.table; it uses "." for the decimal point and a comma for the separator
-write.csv(tidyDT, file = "tidyData.csv", row.names = FALSE)
+write.table(tidyDT,"./tidy_movement_data.txt",row.names=FALSE)
 # do some cleaning
 rm(actLabels, moltenDT, selectedFeatureDT, tidyDT)
 rm(archiveName, featureNames, measures)
-message("Script finished, CSV file written.")
